@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/presentation/widgets/weather_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -71,47 +72,25 @@ class HomeScreen extends StatelessWidget {
                 fontSize: 20,
               ),
               ),
-              Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for (int i = 0; i < 5; i++)
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 100,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                'assets/weather/sunny.png',
-                                height: 50,
-                                width: 50,
-                              ),
-                              Text(
-                                '23°C',
-                                style: GoogleFonts.inter(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
-              ],
+              ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 5, // Number of items in the list
+              itemBuilder: (context, index) {
+                return const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    height: 200, // Specify the height
+                    width: double.infinity,
+                    child:
+                    WeatherCard(
+                      temperature: '23°C',
+                      iconPath: 'assets/weather/sunny.png',
+                    ),
+                  ),
+                );
+              },
             ),
-
+            WeatherCard(temperature: '30', iconPath: 'assets/weather/sunny.png'),
           ],
         ),
       )

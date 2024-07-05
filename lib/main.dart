@@ -27,10 +27,15 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
-        textTheme: TextTheme(
-          bodyMedium: GoogleFonts.inter(fontSize: 14.0, fontWeight: FontWeight.w500),
+        appBarTheme: const AppBarTheme(
+          foregroundColor: Colors.white,
+          backgroundColor: Color(0xff0C1A4C),
         ),
+        scaffoldBackgroundColor: Color(0xff0C1A4C),
+        textTheme: TextTheme(
+          bodyMedium: GoogleFonts.inter(color:Colors.white,fontSize: 14.0, fontWeight: FontWeight.w500),
+        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
       home: const HomeScreen(),
